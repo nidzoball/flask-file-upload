@@ -4,7 +4,7 @@ import passgen
 from random import sample
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = './htmls'
+app.config['UPLOAD_FOLDER'] = './endpoints'
 @app.route('/upload', methods = ["POST", "GET"])  
 def upload():
     
@@ -31,11 +31,11 @@ def got(name):
   f=name
   file=f.split('.')[-1]
   if file=="pdf" or file=="docx" or file=="xlsx":
-    #return send_file(f'./htmls/{f}', 'application/pdf',as_attachment=True,attachment_filename="answer.pdf")
+    #return send_file(f'./endpoints/{f}', 'application/pdf',as_attachment=True,attachment_filename="answer.pdf")
      return send_from_directory(app.config['UPLOAD_FOLDER'], f)
   else:
     print(f)
-    with open(f"./htmls/{f}","r") as f:
+    with open(f"./endpoints/{f}","r") as f:
       data=f.read()
       return render_template("index.html",tags=data)
     
