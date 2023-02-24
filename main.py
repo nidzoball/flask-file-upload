@@ -21,11 +21,6 @@ def upload():
     
     f.save(os.path.join(app.config['UPLOAD_FOLDER'],f.filename))
 
-    #Delete random file for storage
-    files = os.listdir('htmls')
-    for random_file in sample(files, 1):
-      os.remove(f'htmls/{random_file}')
-      print(f'removed {random_file}')
       
     return f'https://Your_Domain/{n}.{file[-1]}'
 
